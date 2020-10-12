@@ -21,10 +21,12 @@ const App = () => {
   return (
       <Router>
       <div className="app">
+        <h1>Spotify Statistics</h1>
         {/* If there is a cookie named 'spotifyAuthToken' */}
         {Cookies.get('spotifyAuthToken') ?
           (
             // Display the app
+            
             <SpotifyApiContext.Provider value={spotifyAuthToken}>
               <React.Suspense fallback={<Loading/>}>
                 <Switch>

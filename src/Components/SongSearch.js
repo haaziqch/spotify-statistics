@@ -6,16 +6,17 @@ function SongSearch() {
     const [searchQuery, setSearchQuery] = React.useState('')
     return (
         <React.Fragment>
+            <div className="container">
                 <label htmlFor="songsearch">Search</label>
                 <input id='songsearch'type='text' onChange={(e) => setSearchQuery(e.target.value)}/>
                 <Search query={searchQuery} track>
                     {({ data })=>
                         data ? (
                             <ul>
-                                <li>Tracks</li>
+                                <h2><li className='primaryList'>Tracks</li></h2>
                                 <ul>
                                 {data.tracks.items.map(track => (
-                                    <li key = {track.id}>
+                                    <li className='primaryList' key = {track.id}>
                                         <Link 
                                             to={{
                                                 pathname:'/statistics',
@@ -25,7 +26,7 @@ function SongSearch() {
                                         }</Link>
                                         <ul>
                                         {track.artists.map(artist => (
-                                            <li key = {artist.id}>{artist.name}</li>
+                                            <li className='secondaryList' key = {artist.id}>{artist.name}</li>
                                         ))}
                                         </ul>
                                     </li>
@@ -35,7 +36,7 @@ function SongSearch() {
                         ) : null
                     }
                 </Search>
-
+            </div>
         </React.Fragment>
     )
 }
