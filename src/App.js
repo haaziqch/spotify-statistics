@@ -39,7 +39,7 @@ const App = () => {
           ) : (
             // Display the login page
             <SpotifyAuth
-              redirectUri='http://localhost:3000/'
+              redirectUri='https://hazspotifystats.netlify.app/'
               clientID='980f2e2029ce43edbcd5de59f9cb452d'
               scopes={[Scopes.userReadPrivate, Scopes.userReadEmail]}
             />
