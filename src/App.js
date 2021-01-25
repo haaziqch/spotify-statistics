@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { SpotifyAuth, Scopes } from 'react-spotify-auth';
 import { SpotifyApiContext } from "react-spotify-api";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Navbar from './Components/Navbar'
 import Cookies from 'js-cookie'
 import './App.css';
 import 'react-spotify-auth/dist/index.css'
@@ -9,6 +10,7 @@ import Loading from './Components/Loading'
 
 const SongSearch = React.lazy(() => import('./Components/SongSearch'))
 const Statistics = React.lazy(() => import('./Components/Statistics'))
+const Explanation = React.lazy(() => import('./Components/Explanation'))
 
 
 const App = () => {
@@ -23,6 +25,7 @@ const App = () => {
       <Router>
       <div className="container">
         <h1 className='flex-center'>Spotify Statistics</h1>
+        <Navbar/>
         {/* If there is a cookie named 'spotifyAuthToken' */}
         {Cookies.get('spotifyAuthToken') ?
           (
@@ -40,6 +43,10 @@ const App = () => {
                     render={(props) => (
                       <Statistics {...props} />
                     )}
+                  />
+                  <Route
+                    path='/explanation' 
+                    component={Explanation}
                   />
                   <Route render={() => <h1>404 Page not found</h1>} />
                 </Switch>

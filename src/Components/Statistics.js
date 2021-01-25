@@ -5,6 +5,8 @@ import Cookies from 'js-cookie'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import Card from './Card.js'
 import FeatureCard from './FeatureCard.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngry, faClock, faDrum, faFire, faGuitar, faHourglassHalf, faKey, faMicrophone, faMusic, faRecordVinyl, faShoePrints, faSmile, faWifi } from '@fortawesome/free-solid-svg-icons' 
 
 
 function Statistics(props) {
@@ -71,11 +73,9 @@ function Statistics(props) {
                         
                         <h2>Explicit:{data.explicit==false ? '❌' : '✔️'}</h2>
                         
-                        <u style={{fontSize:'20px'}}><h2>Popularity*:</h2></u>
+                        <h2>Popularity:</h2>
                         <ProgressBar now={data.popularity} label={`${data.popularity}`}/>
-                        <div style={{color:'yellow'}}>
-                            * Popularity is ranked on a scale from 0-100. The closer the number is to 100, the more popular the song is
-                        </div>
+
 
                         </Card>
 
@@ -83,18 +83,24 @@ function Statistics(props) {
                             header={'Track Features'}
                             subheader={`For ${data.name}`}
                         >
-                        <h2>Danceability: {songFeatures.danceability}</h2>
-                        <h2>Energy: {songFeatures.energy}</h2> 
-                        <h2>Key: {songFeatures.key}</h2> 
-                        <h2>Loudness: {songFeatures.loudness}</h2> 
-                        <h2>Mode: {songFeatures.mode}</h2> 
-                        <h2>Speechiness: {songFeatures.speechiness}</h2> 
-                        <h2>Acousticness: {songFeatures.acousticness}</h2> 
-                        <h2>Instrumentalness: {songFeatures.instrumentalness}</h2> 
-                        <h2>Liveness: {songFeatures.liveness}</h2> 
-                        <h2>Valence: {songFeatures.valence}</h2> 
-                        <h2>Tempo: {songFeatures.tempo}</h2>
-                        <h2>Time Signature: {songFeatures.time_signature}</h2> 
+                        <h2><FontAwesomeIcon icon={faShoePrints}/> Danceability: {songFeatures.danceability}</h2>
+                        <h2><FontAwesomeIcon icon={faFire}/> Energy: {songFeatures.energy}</h2> 
+                        <h2><FontAwesomeIcon icon={faKey}/> Key: {songFeatures.key}</h2> 
+                        <h2><FontAwesomeIcon icon={faWifi}/> Loudness: {songFeatures.loudness}</h2> 
+                        <h2><FontAwesomeIcon icon={faMusic}/> Mode: {songFeatures.mode}</h2> 
+                        <h2><FontAwesomeIcon icon={faMicrophone}/> Speechiness: {songFeatures.speechiness}</h2> 
+                        <h2><FontAwesomeIcon icon={faGuitar}/> Acousticness: {songFeatures.acousticness}</h2> 
+                        <h2><FontAwesomeIcon icon={faDrum}/> Instrumentalness: {songFeatures.instrumentalness}</h2> 
+                        <h2><FontAwesomeIcon icon={faRecordVinyl}/> Liveness: {songFeatures.liveness}</h2> 
+                        <h2>{songFeatures.valence>0.5 ? <FontAwesomeIcon icon={faSmile}/> : <FontAwesomeIcon icon={faAngry}/>} Valence: {songFeatures.valence}</h2> 
+                        <h2><FontAwesomeIcon icon={faClock}/> Tempo: {songFeatures.tempo}</h2>
+                        <h2><FontAwesomeIcon icon={faHourglassHalf}/> Time Signature: {songFeatures.time_signature}</h2>
+
+                        <Link
+                            className='link' 
+                            to='/explanation'>
+                            If you would like an explanation on what these statistics mean, click here
+                        </Link>
                         </FeatureCard>
 
                         </div> 

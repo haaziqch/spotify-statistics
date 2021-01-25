@@ -8,7 +8,7 @@ function SongSearch() {
     let searchItem = ''
     return (
         <React.Fragment>
-            <label className='flex-center' htmlFor="songsearch">Search</label><br/>
+            <h2><label className='flex-center' htmlFor="songsearch">Search</label></h2><br/>
             <div className='flex-center'>
                 <input id='songsearch'type='text' onChange={(e) => searchItem=e.target.value}/>
                 <button type='submit' onClick={() => setSearchQuery(searchItem)}>Submit</button>
