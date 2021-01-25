@@ -10,18 +10,19 @@ import Loading from './Components/Loading'
 const SongSearch = React.lazy(() => import('./Components/SongSearch'))
 const Statistics = React.lazy(() => import('./Components/Statistics'))
 
+
 const App = () => {
   
   const [spotifyAuthToken, setSpotifyAuthToken] = useState();
-  
+
   useEffect(() => {
     setSpotifyAuthToken(Cookies.get('spotifyAuthToken'));
   }, [Cookies.get('spotifyAuthToken')])
 
   return (
       <Router>
-      <div className="app">
-        <h1>Spotify Statistics</h1>
+      <div className="container">
+        <h1 className='flex-center'>Spotify Statistics</h1>
         {/* If there is a cookie named 'spotifyAuthToken' */}
         {Cookies.get('spotifyAuthToken') ?
           (
@@ -30,8 +31,16 @@ const App = () => {
             <SpotifyApiContext.Provider value={spotifyAuthToken}>
               <React.Suspense fallback={<Loading/>}>
                 <Switch>
-                  <Route exact path='/' component={SongSearch}/>
-                  <Route path='/statistics' component={Statistics}/>
+                  <Route
+                    exact path='/' 
+                    component={SongSearch}
+                  />
+                  <Route 
+                    path='/statistics' 
+                    render={(props) => (
+                      <Statistics {...props} />
+                    )}
+                  />
                   <Route render={() => <h1>404 Page not found</h1>} />
                 </Switch>
               </React.Suspense>
@@ -39,7 +48,7 @@ const App = () => {
           ) : (
             // Display the login page
             <SpotifyAuth
-              redirectUri='https://hazspotifystats.netlify.app/'
+              redirectUri='http://localhost:3000/callback'
               clientID='980f2e2029ce43edbcd5de59f9cb452d'
               scopes={[Scopes.userTopRead]}
             />
