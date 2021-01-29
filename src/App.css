@@ -112,6 +112,10 @@ li.secondaryList {
 .card a {
   text-decoration: none;
 }
+
+.card:hover {
+  background: rgb(26, 20, 22);
+}
 .card img {
   margin-bottom: 8px;
 }
@@ -264,3 +268,8 @@ li.secondaryList {
   background-color: #007bff;
   transition: width .6s ease;
 }
+
+a:hover {
+  text-decoration: underline
+}
+

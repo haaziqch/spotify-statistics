@@ -99,7 +99,7 @@ function Statistics(props) {
                         <Link
                             className='link' 
                             to='/explanation'>
-                            If you would like an explanation on what these statistics mean, click here
+                            Statistic Explanation
                         </Link>
                         </FeatureCard>
 
